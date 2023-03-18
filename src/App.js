@@ -6,6 +6,10 @@ import Tasks from "./components/Tasks";
 
 function App() {
   const [tasks, setTasks] = useState([]);
+
+  /// show add task
+  const [showAdd, setShowAdd] = useState(false)
+
   ///add task
   const addTask = (task) => {
     const id = Math.floor(Math.random() * 10000) + 1
@@ -32,8 +36,8 @@ function App() {
 
   return (
     <div className="container">
-      <Header />
-      <Addtask onAdd={addTask} />
+      <Header seeAdd={()=>setShowAdd(!showAdd)} seeAddStatus={showAdd} />
+     { showAdd && <Addtask onAdd={addTask} />}
       {tasks.length > 0 ? <Tasks reminder={reminder} onDelete={deleteTask} Tasks={tasks} /> : "NO TO-DO'S LEFT!"}
     </div>
   );
