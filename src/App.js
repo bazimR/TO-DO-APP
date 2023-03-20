@@ -23,7 +23,7 @@ function App() {
     }))
   }
 
-  const [editStatus, setEditStatus] = useState(false)
+
   ///Toggle reminder
   const reminder = (id) => {
     setTasks(tasks.map(task => {
@@ -40,7 +40,7 @@ function App() {
     <div className="container">
       <Header seeAdd={() => setShowAdd(!showAdd)} seeAddStatus={showAdd} />
       {showAdd && <Addtask onAdd={addTask} />}
-      {tasks.length > 0 ? <Tasks reminder={reminder}  onDelete={deleteTask} Tasks={tasks} editStatus={editStatus} /> : "Tasks completed, create new to-do list to start on next goals."}
+      {tasks.length > 0 ? <Tasks reminder={reminder}  onDelete={deleteTask} Tasks={tasks} /> : "Tasks completed, create new to-do list to start on next goals."}
     </div>
   );
 }
