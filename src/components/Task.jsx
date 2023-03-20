@@ -1,11 +1,15 @@
 import React from "react";
 import { FaTimes } from "react-icons/fa";
+import { FaEdit } from "react-icons/fa";
 
 const Task = ({ Task, onDelete, reminder }) => {
   return (
-    <div className={`task ${Task.reminder ? `reminder` : ""}`} onDoubleClick={(e) => reminder(Task.id)}>
+    <div
+      className={`task ${Task.reminder ? `reminder` : ""}`}
+      onDoubleClick={(e) => reminder(Task.id)}
+    >
       <h3>
-        {Task.text}{" "}
+        {Task.text} 
         <FaTimes
           style={{ color: "red", cursor: "pointer" }}
           onClick={(e) => {

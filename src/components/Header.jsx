@@ -5,7 +5,11 @@ const Header = ({ title, seeAdd, seeAddStatus }) => {
   return (
     <header className="header">
       <h1>{title}</h1>
-      <Button text={seeAddStatus?'Close':'Add'} color={seeAddStatus?'red':'green'} onClick={seeAdd} />
+      <Button
+        text={seeAddStatus ? "Close" : "Add"}
+        color={seeAddStatus ? "red" : "green"}
+        onClick={seeAdd}
+      />
     </header>
   );
 };

@@ -13,8 +13,8 @@ function App() {
   ///add task
   const addTask = (task) => {
     const id = Math.floor(Math.random() * 10000) + 1
-    const newTask = {id,...task}
-    setTasks([newTask,...tasks])
+    const newTask = { id, ...task }
+    setTasks([newTask, ...tasks])
   }
   ///delete Task
   const deleteTask = (id) => {
@@ -22,13 +22,15 @@ function App() {
       return task.id !== id
     }))
   }
+
+  const [editStatus, setEditStatus] = useState(false)
   ///Toggle reminder
   const reminder = (id) => {
     setTasks(tasks.map(task => {
       if (task.id === id) {
         task.reminder = !task.reminder
       }
-      return { ...task, task }
+      return task
     }))
   }
 
@@ -36,9 +38,9 @@ function App() {
 
   return (
     <div className="container">
-      <Header seeAdd={()=>setShowAdd(!showAdd)} seeAddStatus={showAdd} />
-     { showAdd && <Addtask onAdd={addTask} />}
-      {tasks.length > 0 ? <Tasks reminder={reminder} onDelete={deleteTask} Tasks={tasks} /> : "NO TO-DO'S LEFT!"}
+      <Header seeAdd={() => setShowAdd(!showAdd)} seeAddStatus={showAdd} />
+      {showAdd && <Addtask onAdd={addTask} />}
+      {tasks.length > 0 ? <Tasks reminder={reminder}  onDelete={deleteTask} Tasks={tasks} editStatus={editStatus} /> : "Tasks completed, create new to-do list to start on next goals."}
     </div>
   );
 }
